@@ -369,9 +369,15 @@ class UpsamplingBottleneck(nn.Module):
         return out
 
 
-if __name__ == '__main__':
-    img = torch.randn(1, 3, 512, 512)
-    model = ENet(2)
-    output = model(img)
-    print(output.shape)
 
+if __name__ == '__main__':
+    input = torch.randn(1, 3, 512, 512)
+    model = ENet(2)
+
+
+    from speed import SpeedTest
+    SpeedTest(model, input, with_gpu=True)
+    # GPU average spend 10.175282955169678 ms
+
+    SpeedTest(model, input, with_gpu=False)
+    # CPU average spend 135.02722263336182 ms

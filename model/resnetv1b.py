@@ -259,8 +259,13 @@ def resnet152_v1s(pretrained=False, root='~/.torch/models', **kwargs):
 if __name__ == '__main__':
     import torch
 
-    img = torch.randn(4, 3, 224, 224)
+    input = torch.randn(4, 3, 224, 224)
     model = resnet50_v1b(True)
-    output = model(img)
-    output = model(img)
+    # output = model(input)
 
+    from speed import SpeedTest
+    SpeedTest(model, input, with_gpu=True)
+    # GPU average spend 71.14171504974365 ms
+
+    SpeedTest(model, input, with_gpu=False)
+    # CPU average spend 748.0102705955505 ms
