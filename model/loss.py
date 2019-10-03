@@ -12,7 +12,7 @@ def discriminative_loss_single(embedding, inst_label, delta_v, delta_d, param_va
     # extract binary mask from instance label map for each class
     num_classes = len(torch.unique(inst_label)) - 1
     h, w = inst_label.shape
-    inst_masks = torch.zeros(num_classes, h, w).byte().to(device)
+    inst_masks = torch.zeros(num_classes, h, w).bool().to(device)
 
     for idx, label in enumerate(torch.unique(inst_label)):
         if label == 0:  # deal with backgroud

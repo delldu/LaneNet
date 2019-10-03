@@ -125,7 +125,7 @@ def cluster_embed(embeddings, preds_bin, band_width):
     preds_inst = torch.zeros_like(preds_bin)
     for idx, (embedding, bin_pred) in enumerate(zip(embeddings, preds_bin)):
         # print(embedding.size(), bin_pred.size())
-        embedding_fg = torch.transpose(torch.masked_select(embedding, bin_pred.byte()).view(c, -1), 0, 1)
+        embedding_fg = torch.transpose(torch.masked_select(embedding, bin_pred.bool()).view(c, -1), 0, 1)
         # print(embedding_fg.size())
 
         # embedding_expand = embedding.view(embedding.shape[0],

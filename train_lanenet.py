@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     VGG_MEAN = np.array([103.939, 116.779, 123.68]).astype(np.float32)
     VGG_MEAN = torch.from_numpy(VGG_MEAN).cuda().view([1, 3, 1, 1])
-    batch_size = 16  # batch size per GPU
+    batch_size = 8  # batch size per GPU
     learning_rate = 1e-3  # 1e-3
     num_steps = 2000000
     num_workers = 4
@@ -148,7 +148,7 @@ if __name__ == '__main__':
             if phase == 'train':
                 epoch += 1
                 if epoch % ckpt_epoch_interval == 0:
-                    ckpt_dir = 'check_point/ckpt_%s_%s' % (train_start_time, args.tag)
+                    ckpt_dir = 'checkpoint/ckpt_%s_%s' % (train_start_time, args.tag)
                     if os.path.exists(ckpt_dir) is False:
                         os.mkdir(ckpt_dir)
                     ckpt_path = os.path.join(ckpt_dir, 'ckpt_%s_epoch-%d.pth' % (train_start_time, epoch))
