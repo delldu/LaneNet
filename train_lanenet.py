@@ -45,7 +45,7 @@ if __name__ == '__main__':
     learning_rate = 1e-3  # 1e-3
     num_steps = 2000000
     num_workers = 4
-    ckpt_epoch_interval = 10  # save a model checkpoint every X epochs
+    ckpt_epoch_interval = 5  # save a model checkpoint every X epochs
     val_step_interval = 50  # perform a validation step every X traning steps
     train_start_time = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time()))
 

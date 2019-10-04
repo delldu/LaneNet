@@ -120,7 +120,6 @@ if __name__ == '__main__':
         arch = arch + '_1E2D' if args.dual_decoder else arch + '_1E1D'
         print('Architecture:', arch)
 
-        pdb.set_trace()
 
         net = eval(arch)()
         
@@ -136,8 +135,6 @@ if __name__ == '__main__':
         net.eval()
 
         assert args.ckpt_path is not None, 'Checkpoint Error.'
-
-        pdb.set_trace()
 
         checkpoint = torch.load(args.ckpt_path)
         net.load_state_dict(checkpoint['model_state_dict'], strict=True)
